@@ -50,13 +50,13 @@ const Footer = () => {
             <CardContent className={classes.foolterCard}>
                 <div className={classes.footerContent}>
                     <div className={classes.footerElement}>
-                        {footerData.map((item) => <Typography>{item}</Typography>)}
+                        {footerData.map((item,itemIndex) => <Typography key={itemIndex}>{item}</Typography>)}
                     </div>
                     <div className={classes.footerElement}>
-                        {contactUsData.map((item) => <Typography>{item}</Typography>)}
+                        {contactUsData.map((item,itemIndex) => <Typography key={itemIndex}>{item}</Typography>)}
                     </div>
                     <div className={classes.footerElement}>
-                        {askQueryData.map((item) => <Typography>{item}</Typography>)}
+                        {askQueryData.map((item,itemIndex) => <Typography key={itemIndex}>{item}</Typography>)}
                         <OutlinedInput className={classes.inputBox} placeholder='Ask or search your question' />
                     </div>
                     <div className={classes.socialMedia}>

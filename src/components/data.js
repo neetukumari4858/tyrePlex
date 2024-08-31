@@ -149,6 +149,34 @@ export const products = [
         type: "Tubeless"
     },
     {
+        productImage: doubleBikeTyre,
+        brandLogo: ceat,
+        brand: "ceat",
+        category: "bike",
+        title: "Ceat Amazer ",
+        modal: "309/45 A16",
+        price: "1560",
+        actualPrice: 1450,
+        availability: "Ofer Available ",
+        rating: "4",
+        reviewCount: "321",
+        type: "Tubeless"
+    },
+    {
+        productImage: bikeType,
+        brandLogo: ceat,
+        brand: "ceat",
+        category: "bike",
+        title: "Ceat Amazer ",
+        modal: "309/45 A16",
+        price: "1560",
+        actualPrice: 1450,
+        availability: "Ofer Available ",
+        rating: "4",
+        reviewCount: "321",
+        type: "Tubeless"
+    },
+    {
         productImage: carTyre,
         brandLogo: apollo,
         brand: "apollo",
@@ -429,33 +457,6 @@ export const products = [
         reviewCount: "321",
         type: "Tubeless"
     },
-    {
-        productImage: doubleBikeTyre,
-        brandLogo: ceat,
-        brand: "ceat",
-        category: "bike",
-        title: "Ceat Amazer ",
-        modal: "309/45 A16",
-        price: "1560",
-        actualPrice: 1450,
-        availability: "Ofer Available ",
-        rating: "4",
-        reviewCount: "321",
-        type: "Tubeless"
-    },
-    {
-        productImage: bikeType,
-        brandLogo: ceat,
-        brand: "ceat",
-        category: "bike",
-        title: "Ceat Amazer ",
-        modal: "309/45 A16",
-        price: "1560",
-        actualPrice: 1450,
-        availability: "Ofer Available ",
-        rating: "4",
-        reviewCount: "321",
-        type: "Tubeless"
-    },
+    
 ]
 

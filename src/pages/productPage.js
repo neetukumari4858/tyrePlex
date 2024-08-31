@@ -82,9 +82,9 @@ const ProductPage = () => {
                 <CardContent>
                     <Box className={classes.outerContainer}>
                         {filteredProducts.length > 0 ? (<>
-                            {filteredProducts.map((item, index) => (
+                            {filteredProducts.map((item, itemIndex) => (
                                 <>
-                                    <Card key={index} variant="outlined" sx={{ width: 200, minWidth: 180 }}>
+                                    <Card key={itemIndex} variant="outlined" sx={{ width: 200, minWidth: 180 }}>
                                         <CardContent className={classes.cardContent}>
                                             <Badge badgeContent={<img src={warrentyBadge} alt='warrentyBadge' className={classes.badge} />}  >
                                                 <img src={item.productImage} alt={item.title} width={120} height={100} />

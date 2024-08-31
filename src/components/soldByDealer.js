@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import { useState } from 'react';
 import Box from '@mui/joy/Box';
 import FilterModal from "./filterModal";
 import StarIcon from '@mui/icons-material/Star';
@@ -52,30 +52,39 @@ const useStyles = makeStyles({
     badge: {
         height: 55,
     },
+    buttonContainer: {
+        display: "flex",
+        gap: 10,
+    },
+    warrantyImg: {
+        width: 120,
+        height: 100
+    }
 });
 
 const SoldByDealerCard = () => {
     const classes = useStyles();
     const [open, setOpen] = useState(false);
     const [filteredProducts, setFilteredProducts] = useState(products);
+    const [showAll, setShowAll] = useState(false);
 
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
     const handleApplyFilters = (filters) => {
-        const { brand, sortby, category, modal } = filters;
+        const { brand, price, category, modal } = filters;
         let filteredData = products;
 
         if (brand) filteredData = filteredData.filter(item => item.brand === brand.toLowerCase());
         if (category) filteredData = filteredData.filter(item => item.category === category.toLowerCase());
         if (modal) filteredData = filteredData.filter(item => item.modal === modal);
 
-        if (sortby === "Price Low to High") {
-            filteredData = filteredData.sort((a, b) => parseInt(a.actualPrice) - parseInt(b.actualPrice));
-        } else if (sortby === "Price High to Low") {
-            filteredData = filteredData.sort((a, b) => parseInt(b.actualPrice) - parseInt(a.actualPrice));
-        }
+        if (price === "Price Low to High") {
+            filteredData = filteredData.sort((a, b) => a.actualPrice - b.actualPrice);
 
+        } else if (price === "Price High to Low") {
+            filteredData = filteredData.sort((a, b) => b.actualPrice - a.actualPrice);
+        }
         setFilteredProducts(filteredData);
     };
 
@@ -83,23 +92,28 @@ const SoldByDealerCard = () => {
         setFilteredProducts(products);
     };
 
+    const productToShow = showAll ? filteredProducts : filteredProducts.slice(0, 4)
+
     return (
         <Card >
             <Container sx={{ padding: 3 }}>
                 <Typography>Products offered by this Dealer</Typography>
-                <Button onClick={handleOpen} variant="outlined" sx={{ marginTop: 2 }}>Filters</Button>
+                <div className={classes.buttonContainer}>
+                    <Button onClick={handleOpen} variant="outlined" sx={{ marginTop: 2 }}>Filters</Button>
+                    <Button variant="outlined" sx={{ marginTop: 2 }} onClick={() => setShowAll(!showAll)}>{showAll ? 'Show Less' : 'View All'}</Button>
+                </div>
             </Container>
-            <FilterModal open={open} handleClose={handleClose} onApply={handleApplyFilters} onClear={handleClearFilters}  // Pass the clear handler
+            <FilterModal open={open} handleClose={handleClose} onApply={handleApplyFilters} onClear={handleClearFilters}
             />
             <CardContent>
                 <Box className={classes.outerContainer}>
-                    {filteredProducts.length > 0 ? (<>
-                        {filteredProducts.map((item, index) => (
+                    {productToShow.length > 0 ? (<>
+                        {productToShow.map((item, itemIndex) => (
                             <>
-                                <Card key={index} variant="outlined" sx={{ width: 200, minWidth: 180 }}>
+                                <Card key={itemIndex} variant="outlined" sx={{ width: 200, minWidth: 180 }}>
                                     <CardContent className={classes.cardContent}>
                                         <Badge badgeContent={<img src={warrentyBadge} alt='warrentyBadge' className={classes.badge} />}  >
-                                            <img src={item.productImage} alt={item.title} width={120} height={100} />
+                                            <img src={item.productImage} alt={item.title} className={classes.warrantyImg} />
                                         </Badge>
                                         <Typography level="body-sm">{item.title}</Typography>
                                         <Typography level="body-sm">{item.modal}</Typography>

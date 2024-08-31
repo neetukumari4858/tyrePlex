@@ -31,7 +31,7 @@ const useStyles = makeStyles({
 
 const FilterModal = ({ open, handleClose, onApply, onClear }) => {
   const brand = ["Apollo", 'Ceat', "MRF"]
-  const sortBy = ["Price Low to high", "Price High to Low"]
+  const price = ["Price Low to High", "Price High to Low"]
   const category = ['Car', 'Bike']
   const modal = ['205/65 R16', '105/55 D16', "309/45 A16"]
   const classes = useStyles()
@@ -80,7 +80,7 @@ const FilterModal = ({ open, handleClose, onApply, onClear }) => {
           </div>
           <div className={classes.divider}>
             <ControlledOpenSelect placeholder='Brand' menuItems={brand} onChange={handleFilterChange} />
-            <ControlledOpenSelect placeholder='Price' menuItems={sortBy} onChange={handleFilterChange} />
+            <ControlledOpenSelect placeholder='Price' menuItems={price} onChange={handleFilterChange} />
           </div>
           <Typography>Advance Filter</Typography>
           <div className={classes.divider}>
